@@ -1,0 +1,109 @@
+@import "./global.css";
+
+:root {
+  --gray: rgb(63, 63, 63);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner {
+  width: 100vw;
+  background: linear-gradient(to right, #0395e9, #0395e9 50%, #78cdc9 75%);
+}
+
+.banner img {
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  gap: 4.8rem;
+  padding-top: 4.8rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.profile h2 {
+  font-weight: 600;
+  font-size: medium;
+  color: #0898e8;
+}
+
+.profile ul {
+  width: 100%;
+  font-size: small;
+  color: var(--gray);
+  padding-left: 1.2rem;
+  list-style: none;
+}
+
+.profile li {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.profile p a {
+  color: var(--gray);
+}
+
+.github {
+  width: 2rem;
+  padding: 0.2rem;
+  height: auto;
+}
+
+.detail {
+  width: 100%;
+}
+
+.detail h2 {
+  font-size: x-large;
+  margin-bottom: 1.2rem;
+}
+
+.detail h3 {
+  font-size: medium;
+  margin-bottom: 1rem;
+}
+
+.detail .content {
+  display: flex;
+  align-items: stretch;
+  gap: 1.6rem;
+}
+
+.detail .content div {
+  flex: 1;
+  border-right: solid 1px rgb(231, 231, 231);
+}
+
+.detail .content div:first-child {
+  margin: 0;
+}
+
+.detail .content div:last-child {
+  border: none;
+}
+
+.detail .content p {
+  color: var(--gray);
+}
+
+.lightgray {
+  color: rgb(231, 231, 231);
+}
