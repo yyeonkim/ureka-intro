@@ -121,6 +121,7 @@ main {
 
 .log .images {
   display: flex;
+  gap: 0.6rem;
 }
 
 .log .box {
