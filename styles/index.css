@@ -8,6 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .banner {
@@ -116,7 +117,6 @@ main {
 
 .log .images {
   display: flex;
-  gap: 1rem;
 }
 
 .log .box {
@@ -200,6 +200,7 @@ b {
   .log {
     display: flex;
     gap: 1rem;
+    padding-top: 1rem;
   }
 
   .log .date {
@@ -208,5 +209,6 @@ b {
 
   .log .images {
     flex-direction: column;
+    flex: 1;
   }
 }
