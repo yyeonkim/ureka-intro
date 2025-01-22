@@ -49,6 +49,7 @@ main {
   color: var(--gray);
   padding-left: 1.2rem;
   list-style: none;
+  font-weight: 400;
 }
 
 .profile li {
@@ -105,6 +106,7 @@ main {
 
 .intro p {
   color: var(--gray);
+  font-weight: 400;
 }
 
 .intro ul {
@@ -114,6 +116,7 @@ main {
 .log .date {
   display: flex;
   justify-content: space-between;
+  font-weight: 400;
 }
 
 .log .images {
