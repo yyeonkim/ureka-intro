@@ -85,6 +85,7 @@ main {
 .intro {
   display: flex;
   align-items: stretch;
+  margin-bottom: 1rem;
 }
 
 .intro div {
