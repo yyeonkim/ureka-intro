@@ -73,6 +73,7 @@ main {
 
 .detail h2 {
   font-size: x-large;
+  margin-bottom: 1rem;
 }
 
 .detail h3 {
@@ -80,28 +81,56 @@ main {
   margin-bottom: 1rem;
 }
 
-.detail .content {
+.intro {
   display: flex;
   align-items: stretch;
 }
 
-.detail .content div {
+.intro div {
   flex: 1;
   border-right: solid 1px rgb(231, 231, 231);
   padding: 1.6rem;
 }
 
-.detail .content div:first-child {
+.intro div:first-child {
   padding-left: 0;
 }
 
-.detail .content div:last-child {
+.intro div:last-child {
   border: none;
   padding-right: 0;
 }
 
-.detail .content p {
+.intro p {
   color: var(--gray);
+}
+
+.intro ul {
+  padding-left: 2.4rem;
+}
+
+.log .date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.log .images {
+  display: flex;
+  gap: 1rem;
+}
+
+.log .box {
+  flex: 1;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log .box img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
 }
 
 .lightgray {
@@ -159,12 +188,25 @@ b {
     margin-bottom: 0.6rem;
   }
 
-  .detail .content {
+  .intro {
     flex-direction: column;
   }
 
-  .detail .content div {
+  .intro div {
     border-right: none;
     padding: 1rem 0;
+  }
+
+  .log {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .log .date {
+    flex-direction: column;
+  }
+
+  .log .images {
+    flex-direction: column;
   }
 }
