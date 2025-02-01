@@ -1,19 +1,27 @@
 @import "./global.css";
 
 :root {
-  --gray: rgb(63, 63, 63);
+  --gray-font: rgb(63, 63, 63);
+  --skyblue: #78cdc9;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100vw;
   overflow-x: hidden;
 }
 
+h2 {
+  font-size: x-large;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: medium;
+  margin-bottom: 1rem;
+}
+
 .banner {
-  width: 100vw;
-  background: linear-gradient(to right, #0395e9, #0395e9 50%, #78cdc9 75%);
+  background: linear-gradient(to right, #0395e9, #0395e9 50%, var(--skyblue) 75%);
 }
 
 .banner img {
@@ -23,11 +31,15 @@ body {
 }
 
 main {
-  width: 100%;
+  padding: 4.8rem 0;
   max-width: 1200px;
+  margin: 0 auto;
+  /* overflow-x: auto; */
+}
+
+.intro {
   display: flex;
   gap: 4.8rem;
-  padding: 4.8rem 2rem;
 }
 
 .profile {
@@ -46,7 +58,7 @@ main {
 .profile ul {
   width: 100%;
   font-size: small;
-  color: var(--gray);
+  color: var(--gray-font);
   padding-left: 1.2rem;
   list-style: none;
   font-weight: 400;
@@ -60,7 +72,7 @@ main {
 }
 
 .profile p a {
-  color: var(--gray);
+  color: var(--gray-font);
 }
 
 .github {
@@ -69,77 +81,148 @@ main {
   height: auto;
 }
 
-.detail {
+.about-me {
   width: 100%;
 }
 
-.detail h2 {
-  font-size: x-large;
-  margin-bottom: 1rem;
-}
-
-.detail h3 {
-  font-size: medium;
-  margin-bottom: 1rem;
-}
-
-.intro {
+.about-me .content {
   display: flex;
   align-items: stretch;
   margin-bottom: 1rem;
 }
 
-.intro div {
+.about-me .content div {
   flex: 1;
   border-right: solid 1px rgb(231, 231, 231);
   padding: 1.6rem;
 }
 
-.intro div:first-child {
+.about-me .content div:first-child {
   padding-left: 0;
 }
 
-.intro div:last-child {
+.about-me .content div:last-child {
   border: none;
   padding-right: 0;
 }
 
-.intro p {
-  color: var(--gray);
+.about-me .content p {
+  color: var(--gray-font);
   font-weight: 400;
 }
 
-.intro ul {
+.about-me .content ul {
   padding-left: 2.4rem;
 }
 
-.log .date {
+.log {
+  margin-top: 4.8rem;
+}
+
+.log .content {
   display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.log .content .detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  overflow-x: hidden;
+  margin-right: -2rem;
+}
+
+.log .detail .box {
+  padding-right: 2rem;
+}
+
+.timeline {
+  display: flex;
+  font-size: small;
+  gap: 1rem;
+}
+
+.timeline .years {
+  color: var(--gray-font);
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  font-weight: 400;
 }
 
-.log .images {
-  display: flex;
-  gap: 0.6rem;
+.timeline .years span {
+  display: block;
 }
 
-.log .box {
-  flex: 1;
-  background-color: lightgray;
+.timeline .line {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.log .box img {
-  width: auto;
-  height: 100%;
-  object-fit: contain;
+.timeline .line .point {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 100%;
+  background-color: lightgray;
 }
 
-.lightgray {
-  color: rgb(231, 231, 231);
+.timeline .line .point:first-child {
+  background-color: var(--skyblue);
+}
+
+.timeline .line .point:last-child {
+  transition: background-color 0.5s 0.5s ease-in-out;
+}
+
+.timeline .line .bar {
+  width: 0.6rem;
+  height: 100%;
+  background-color: lightgray;
+}
+
+.timeline .bar div {
+  width: 100%;
+  background-color: var(--skyblue);
+  transition: height 0.5s ease-in-out;
+}
+
+.slide {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.slide .wrapper {
+  width: fit-content;
+}
+
+.slide .wrapper ul {
+  list-style: none;
+  display: flex;
+  gap: 0.6rem;
+  padding: 0;
+}
+
+.slide ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.slide .wrapper img {
+  border-radius: 0.4rem;
+  height: 24rem;
+  min-width: 18.2rem;
+  width: auto;
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.slide .wrapper .caption {
+  text-align: center;
+  font-size: small;
+  color: gray;
 }
 
 b {
@@ -166,9 +249,11 @@ b {
 /* Mobile */
 @media (max-width: 990px) {
   main {
-    flex-direction: column;
     padding: 2.4rem 2rem;
-    gap: 2.4rem;
+  }
+
+  h3 {
+    margin-bottom: 0.6rem;
   }
 
   .banner {
@@ -179,41 +264,52 @@ b {
     object-fit: cover;
   }
 
+  .intro {
+    flex-direction: column;
+  }
+
   .profile ul {
     padding-left: 0.6rem;
   }
 
-  .detail h2 {
+  .about-me h2,
+  .log h2 {
     border-bottom: solid 1px rgb(231, 231, 231);
     padding-bottom: 0.6rem;
     margin-bottom: 1rem;
   }
 
-  .detail h3 {
-    margin-bottom: 0.6rem;
-  }
-
-  .intro {
+  .about-me .content {
     flex-direction: column;
   }
 
-  .intro div {
+  .about-me .content div {
     border-right: none;
     padding: 1rem 0;
   }
 
-  .log {
-    display: flex;
-    gap: 1rem;
-    padding-top: 1rem;
+  .log .content .detail .box p br {
+    display: none;
   }
 
-  .log .date {
-    flex-direction: column;
+  .log p {
+    font-size: small;
   }
 
-  .log .images {
-    flex-direction: column;
-    flex: 1;
+  .timeline {
+    gap: 0.6rem;
+  }
+
+  .timeline .line .point {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .timeline .line .bar {
+    width: 0.4rem;
+  }
+
+  .slide {
+    margin-right: -2rem;
   }
 }
