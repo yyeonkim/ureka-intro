@@ -6,7 +6,7 @@
 }
 
 body {
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -135,7 +135,7 @@ main {
     overflow-x: hidden;
     margin-right: -2rem;
 
-    .box {
+    .text {
       padding-right: 2rem;
     }
   }
@@ -194,6 +194,7 @@ main {
 .slide {
   overflow-x: auto;
   margin-top: 1rem;
+  padding-right: 2rem;
 
   > div {
     width: fit-content;
@@ -238,22 +239,20 @@ main {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   gap: 4rem;
-  display: none;
 
   .content {
-    background-color: white;
     overflow: hidden;
-    max-width: 60rem;
-    max-height: 60rem;
     border-radius: 0.8rem;
 
     img {
       width: 100%;
       height: 100%;
+      max-width: 60rem;
+      max-height: 60rem;
       object-fit: contain;
     }
   }
@@ -326,14 +325,21 @@ main {
   .about-me .content {
     flex-direction: column;
 
-    .content div {
+    > div {
       border-right: none;
       padding: 1rem 0;
     }
   }
 
-  .log .detail br {
-    display: none;
+  .log .detail {
+    margin-left: -2rem;
+
+    .text {
+      padding-left: 2rem;
+    }
+    br {
+      display: none;
+    }
   }
 
   .timeline {
@@ -351,7 +357,11 @@ main {
   }
 
   .slide {
-    margin-right: -2rem;
+    padding-left: 2rem;
+  }
+
+  #modal .content {
+    margin: 0 2rem;
   }
 }
 
