@@ -1,3 +1,16 @@
+const slideImgList = [
+  "job-2025-02-01-130326.png",
+  "job-20240320-072828.jpg",
+  "quit-20250201-121908.jpg",
+  "retry-20240822-130351.jpg",
+  "retry-20240905-205608.jpg",
+  "trip-20241003-162907.jpg",
+  "trip-20241002-194334.jpg",
+  "trip-20241003-120458.jpg",
+  "ureka-20250108-095534.jpg",
+  "retry-133314732515599451.png",
+];
+
 const scrollBar = document.querySelector(".bar div");
 const lastPoint = document.querySelectorAll(".point")[1];
 const slideImgs = document.querySelectorAll(".slide img");
@@ -11,6 +24,8 @@ document.addEventListener(
 
     if (percent === 100) lastPoint.style.backgroundColor = "#78cdc9";
     else lastPoint.style.backgroundColor = "#d3d3d3";
+
+    lazyLoadImgs();
   }, 300)
 );
 
@@ -43,4 +58,17 @@ function throttle(callback, delay) {
       timerId = null;
     }, delay);
   };
+}
+
+let timeoutId;
+
+function lazyLoadImgs() {
+  const lazyImgs = document.querySelectorAll(".lazy");
+
+  lazyImgs.forEach((img) => {
+    if (img.offsetTop < window.innerHeight + window.scrollY) {
+      img.setAttribute("src", img.dataset.src);
+      img.classList.remove("lazy");
+    }
+  });
 }
