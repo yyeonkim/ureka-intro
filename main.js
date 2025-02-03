@@ -19,12 +19,7 @@ const modal = document.querySelector("#modal");
 document.addEventListener(
   "scroll",
   throttle(() => {
-    const percent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    scrollBar.style.height = percent + "%";
-
-    if (percent === 100) lastPoint.style.backgroundColor = "#78cdc9";
-    else lastPoint.style.backgroundColor = "#d3d3d3";
-
+    fillTimelin();
     lazyLoadImgs();
   }, 300)
 );
@@ -32,27 +27,11 @@ document.addEventListener(
 slideImgs.forEach((img) =>
   img.addEventListener("click", (e) => {
     const modalImg = document.querySelector("#modal img");
+    const currentImgSrc = new URL(e.target.src).pathname.slice(1);
+    let currentIndex = imgSrcList.findIndex((src) => src === currentImgSrc);
 
-    modalImg.src = e.target.src;
-    modalImg.onclick = (e) => {
-      e.stopPropagation();
-    };
-    document.body.style.overflowY = "hidden"; // Prevent scroll
-    modal.style.display = "flex";
-
-    const [leftBtn, rightBtn] = document.querySelectorAll("button");
-    const targetSrc = new URL(e.target.src).pathname.slice(1);
-    let index = imgSrcList.findIndex((src) => src === targetSrc);
-
-    leftBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      modalImg.src = imgSrcList[index > 0 ? --index : 0];
-    });
-    rightBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      modalImg.src = imgSrcList[index < imgSrcList.length - 1 ? ++index : imgSrcList.length - 1];
-      console.log("move right");
-    });
+    setModalImg(modalImg, currentImgSrc);
+    slideWhenClickBtns(modalImg, currentIndex);
   })
 );
 
@@ -73,7 +52,13 @@ function throttle(callback, delay) {
   };
 }
 
-let timeoutId;
+function fillTimelin() {
+  const percent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  scrollBar.style.height = percent + "%";
+
+  if (percent === 100) lastPoint.style.backgroundColor = "#78cdc9";
+  else lastPoint.style.backgroundColor = "#d3d3d3";
+}
 
 function lazyLoadImgs() {
   const lazyImgs = document.querySelectorAll(".lazy");
@@ -83,5 +68,29 @@ function lazyLoadImgs() {
       img.setAttribute("src", img.dataset.src);
       img.classList.remove("lazy");
     }
+  });
+}
+
+function setModalImg(modalImg, imgSrc) {
+  modalImg.src = imgSrc;
+  modalImg.onclick = (e) => {
+    e.stopPropagation();
+  };
+  document.body.style.overflowY = "hidden"; // Prevent scroll
+  modal.style.display = "flex";
+}
+
+function slideWhenClickBtns(modalImg, index) {
+  const [leftBtn, rightBtn] = document.querySelectorAll("button");
+
+  leftBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    index = index > 0 ? index - 1 : imgSrcList.length - 1;
+    modalImg.src = imgSrcList[index];
+  });
+  rightBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    index = (index + 1) % imgSrcList.length;
+    modalImg.src = imgSrcList[index];
   });
 }
