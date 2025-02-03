@@ -1,14 +1,14 @@
 const imgSrcList = [
-  "images/job-2025-02-01-130326.png",
-  "images/job-20240320-072828.jpg",
-  "images/quit-20250201-121908.jpg",
-  "images/retry-20240822-130351.jpg",
-  "images/retry-20240905-205608.jpg",
-  "images/trip-20241003-162907.jpg",
-  "images/trip-20241002-194334.jpg",
-  "images/trip-20241003-120458.jpg",
-  "images/ureka-20250108-095534.jpg",
-  "images/retry-133314732515599451.png",
+  "./images/job-2025-02-01-130326.png",
+  "./images/job-20240320-072828.jpg",
+  "./images/quit-20250201-121908.jpg",
+  "./images/retry-20240822-130351.jpg",
+  "./images/retry-20240905-205608.jpg",
+  "./images/trip-20241003-162907.jpg",
+  "./images/trip-20241002-194334.jpg",
+  "./images/trip-20241003-120458.jpg",
+  "./images/ureka-20250108-095534.jpg",
+  "./images/retry-133314732515599451.png",
 ];
 
 const scrollBar = document.querySelector(".bar div");
@@ -71,6 +71,7 @@ function lazyLoadImgs() {
 }
 
 function setModalImg(modalImg, imgSrc) {
+  console.log(imgSrc);
   modalImg.src = imgSrc;
   modalImg.onclick = (e) => {
     e.stopPropagation();
