@@ -29,7 +29,7 @@ slideImgs.forEach((img) =>
     const modalImg = document.querySelector("#modal img");
     let currentIndex = Number(e.target.dataset.index);
 
-    setModalImg(modalImg, e.target.src);
+    setModalImg(modalImg, imgSrcList[currentIndex]);
     slideWhenClickBtns(modalImg, currentIndex);
   })
 );
