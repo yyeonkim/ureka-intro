@@ -1,14 +1,14 @@
-const slideImgList = [
-  "job-2025-02-01-130326.png",
-  "job-20240320-072828.jpg",
-  "quit-20250201-121908.jpg",
-  "retry-20240822-130351.jpg",
-  "retry-20240905-205608.jpg",
-  "trip-20241003-162907.jpg",
-  "trip-20241002-194334.jpg",
-  "trip-20241003-120458.jpg",
-  "ureka-20250108-095534.jpg",
-  "retry-133314732515599451.png",
+const imgSrcList = [
+  "images/job-2025-02-01-130326.png",
+  "images/job-20240320-072828.jpg",
+  "images/quit-20250201-121908.jpg",
+  "images/retry-20240822-130351.jpg",
+  "images/retry-20240905-205608.jpg",
+  "images/trip-20241003-162907.jpg",
+  "images/trip-20241002-194334.jpg",
+  "images/trip-20241003-120458.jpg",
+  "images/ureka-20250108-095534.jpg",
+  "images/retry-133314732515599451.png",
 ];
 
 const scrollBar = document.querySelector(".bar div");
@@ -34,12 +34,25 @@ slideImgs.forEach((img) =>
     const modalImg = document.querySelector("#modal img");
 
     modalImg.src = e.target.src;
-    modalImg.alt = e.target.alt;
     modalImg.onclick = (e) => {
       e.stopPropagation();
     };
     document.body.style.overflowY = "hidden"; // Prevent scroll
     modal.style.display = "flex";
+
+    const [leftBtn, rightBtn] = document.querySelectorAll("button");
+    const targetSrc = new URL(e.target.src).pathname.slice(1);
+    let index = imgSrcList.findIndex((src) => src === targetSrc);
+
+    leftBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      modalImg.src = imgSrcList[index > 0 ? --index : 0];
+    });
+    rightBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      modalImg.src = imgSrcList[index < imgSrcList.length - 1 ? ++index : imgSrcList.length - 1];
+      console.log("move right");
+    });
   })
 );
 
