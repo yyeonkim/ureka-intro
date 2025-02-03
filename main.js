@@ -1,14 +1,14 @@
 const imgSrcList = [
-  "images/job-2025-02-01-130326.png",
-  "images/job-20240320-072828.jpg",
-  "images/quit-20250201-121908.jpg",
-  "images/retry-20240822-130351.jpg",
-  "images/retry-20240905-205608.jpg",
-  "images/trip-20241003-162907.jpg",
-  "images/trip-20241002-194334.jpg",
-  "images/trip-20241003-120458.jpg",
-  "images/ureka-20250108-095534.jpg",
-  "images/retry-133314732515599451.png",
+  `${window.location.href}images/job-2025-02-01-130326.png`,
+  `${window.location.href}images/job-20240320-072828.jpg`,
+  `${window.location.href}images/quit-20250201-121908.jpg`,
+  `${window.location.href}images/retry-20240822-130351.jpg`,
+  `${window.location.href}images/retry-20240905-205608.jpg`,
+  `${window.location.href}images/trip-20241003-162907.jpg`,
+  `${window.location.href}images/trip-20241002-194334.jpg`,
+  `${window.location.href}images/trip-20241003-120458.jpg`,
+  `${window.location.href}images/ureka-20250108-095534.jpg`,
+  `${window.location.href}images/retry-133314732515599451.png`,
 ];
 
 const scrollBar = document.querySelector(".bar div");
@@ -27,10 +27,9 @@ document.addEventListener(
 slideImgs.forEach((img) =>
   img.addEventListener("click", (e) => {
     const modalImg = document.querySelector("#modal img");
-    const currentImgSrc = new URL(e.target.src).pathname.slice(1);
-    let currentIndex = imgSrcList.findIndex((src) => src === currentImgSrc);
+    let currentIndex = imgSrcList.findIndex((src) => src === e.target.src);
 
-    setModalImg(modalImg, currentImgSrc);
+    setModalImg(modalImg, e.target.src);
     slideWhenClickBtns(modalImg, currentIndex);
   })
 );
