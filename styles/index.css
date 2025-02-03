@@ -242,7 +242,6 @@ main {
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
 
   .content {
     overflow: hidden;
@@ -261,6 +260,14 @@ main {
     cursor: pointer;
     background-color: transparent;
     color: white;
+    position: fixed;
+
+    &:first-child {
+      left: 8rem;
+    }
+    &:last-child {
+      right: 8rem;
+    }
   }
 }
 
@@ -352,12 +359,17 @@ main {
   }
 
   #modal {
-    gap: 0;
+    gap: 1rem;
 
-    .content img {
-      max-width: 30rem;
-      max-height: 30rem;
+    button {
+      position: static;
     }
+  }
+}
+
+@media (max-width: 360px) {
+  #modal {
+    gap: 0;
   }
 }
 
